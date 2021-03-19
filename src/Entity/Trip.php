@@ -27,6 +27,17 @@ class Trip
      */
     private $image;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $author;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="trips")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +63,30 @@ class Trip
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?string
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(string $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
