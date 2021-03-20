@@ -18,5 +18,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 class TripController extends AbstractController{
-    
+    /**
+     * @Route("/admin/trip", name="tripList")
+     */
+    public function trip(TripRepository $tripRepository){
+        $trips = $tripRepository->findAll();
+
+        return $this->render('Admin/trip.html.twig', [
+            'trips' => $trips
+        ]);
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Category;
 use App\Entity\Trip;
+use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use App\Repository\TripRepository;
 use Doctrine\ORM\EntityManager;
@@ -42,7 +43,7 @@ class CategoryController extends AbstractController{
         //new category
         $category = new Category();
         //new form
-        $categoryForm = $this->createForm(category::class, $category);
+        $categoryForm = $this->createForm(CategoryType::class, $category);
         //post request from form
         $categoryForm->handleRequest($request);
 
@@ -53,7 +54,7 @@ class CategoryController extends AbstractController{
             return $this->redirectToRoute('categoryList');
         }
 
-        return $this->render('Admin/category/insertCategory.html.twig', [
+        return $this->render('Admin/insertCategory.html.twig', [
             'categoryForm' => $categoryForm->createView()
         ]);
     }
