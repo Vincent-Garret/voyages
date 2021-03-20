@@ -5,6 +5,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\Category;
 use App\Entity\Trip;
+use App\Form\TripFormType;
+use App\Form\TripType;
 use App\Repository\CategoryRepository;
 use App\Repository\TripRepository;
 use Doctrine\ORM\EntityManager;
@@ -29,6 +31,9 @@ class TripController extends AbstractController{
         ]);
     }
 
+    /**
+     * @Route("/admin/insert/trip", name="tripInsert")
+     */
     public function insertTrip(
         Request $request,
         EntityManagerInterface $entityManager,
