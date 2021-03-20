@@ -29,5 +29,33 @@ class CategoryController extends AbstractController{
             'categories' => $categories
         ]);
     }
+
+    /**
+     * @Route("/admin/insert/category", name="categoryInsert)
+     */
+    public function insertCategory(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        SluggerInterface $slugger
+    )
+    {
+        //new category
+        $category = new Category();
+        //new form
+        $categoryForm = $this->createForm(category::class, $category);
+        //post request from form
+        $categoryForm->handleRequest($request);
+
+        if ($categoryForm->isSubmitted() && $categoryForm->isValid()){
+            $entityManager->persist($category);
+            $entityManager->flush();
+            $this->addFlash('success', 'Catégorie bien enregistrée !');
+            return $this->redirectToRoute('categoryList');
+        }
+
+        return $this->render('Admin/category/insertCategory.html.twig', [
+            'categoryForm' => $categoryForm->createView()
+        ]);
+    }
     
 }
