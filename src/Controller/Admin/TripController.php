@@ -28,4 +28,24 @@ class TripController extends AbstractController{
             'trips' => $trips
         ]);
     }
+
+    public function insertTrip(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        SluggerInterface $slugger
+    ){
+        $trip = new Trip();
+        $tripForm = $this->createForm(TripType::class, $trip);
+        $tripForm->handleRequest($request);
+
+        if ($tripForm->isSubmitted() && $tripForm->isValid()){
+            $entityManager->persist($trip);
+            $entityManager->flush();
+            $this->addFlash('Success', 'Votre voyage a été crée !');
+            return $this->redirectToRoute('tripList');
+        }
+        return $this->render('Admin/insertTrip.html.twig', [
+            'tripForm' => $tripForm->createView()
+        ]);
+    }
 }
