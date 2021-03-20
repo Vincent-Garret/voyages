@@ -31,7 +31,7 @@ class CategoryController extends AbstractController{
     }
 
     /**
-     * @Route("/admin/insert/category", name="categoryInsert)
+     * @Route("/admin/insert/category", name="categoryInsert")
      */
     public function insertCategory(
         Request $request,
