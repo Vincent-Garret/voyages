@@ -6,6 +6,7 @@ use App\Entity\Category;
 use App\Entity\Trip;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -18,7 +19,10 @@ class TripType extends AbstractType
     {
         $builder
             ->add('poetry')
-            ->add('image')
+            ->add('image', FileType::class, [
+                'label' => 'Image',
+                'mapped' => false
+            ])
             ->add('author')
             ->add('category', EntityType::class, [
                 'class' => Category::class,

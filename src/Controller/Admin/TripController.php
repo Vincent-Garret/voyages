@@ -44,6 +44,20 @@ class TripController extends AbstractController{
         $tripForm->handleRequest($request);
 
         if ($tripForm->isSubmitted() && $tripForm->isValid()){
+            $image = $tripForm->get('image')->getData();
+            if($image){
+                $originalFileName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFileName = $slugger->slug($originalFileName);
+                $newFileName = $safeFileName.'-'.uniqid().'.'.$image->guessExtension();
+                $image->move(
+                    $this->getParameter('img'),
+                    $newFileName
+                );
+                
+                $trip->setImage($newFileName);
+                $entityManager->persist($trip);
+                $entityManager->flush();
+            }
             $entityManager->persist($trip);
             $entityManager->flush();
             $this->addFlash('Success', 'Votre voyage a été crée !');
