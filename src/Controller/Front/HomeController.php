@@ -14,15 +14,14 @@ class HomeController extends AbstractController
     /**
      * @Route("", name="home")
      */
-    public function home()
+    public function trips(
+        TripRepository $tripRepository,
+        CategoryRepository $categoryRepository)
     {
-        return $this->render('Front/home.html.twig');
-    }
-
-    public function trips(TripRepository $tripRepository)
-    {
+        $categories = $categoryRepository->findAll();
         $trips = $tripRepository->findAll();
         return $this->render('Front/home.html.twig', [
+            'categories' => $categories,
             'trips' => $trips
         ]);
     }

@@ -1,0 +1,9 @@
+{% for trip in trips %}
+    
+    {% if trip.image %}
+        <img src="{{asset('img/'~ trip.image) }}" alt="image de test">
+        <p>{{ trip.poetry }}</p>
+        <p>{{ trip.author }}</p>
+    {% endif %}
+
+{% endfor %}

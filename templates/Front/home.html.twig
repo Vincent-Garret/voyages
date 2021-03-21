@@ -1,7 +1,13 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+    {% for trip in trips %}
+        
+        {% if trip.image %}
+            <img src="{{asset('img/'~ trip.image) }}" alt="image de test">
+            <p>{{ trip.poetry }}</p>
+            <p>{{ trip.author }}</p>
+        {% endif %}
 
-<p>test</p>
-
+    {% endfor %}
 {% endblock %}
