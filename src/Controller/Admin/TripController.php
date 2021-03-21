@@ -53,4 +53,44 @@ class TripController extends AbstractController{
             'tripForm' => $tripForm->createView()
         ]);
     }
+
+    /**
+     * @Route("admin/delete/trip/{id}", name="tripDelete")
+     */
+    public function deleteTrip(
+        TripRepository $tripRepository,
+        EntityManagerInterface $entityManager,
+        $id
+    ){
+        $trip = $tripRepository->find($id);
+        $entityManager->remove($trip);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Votre voyage à bien été supprimé !');
+        return $this->redirectToRoute('tripList');
+    }
+
+    /**
+     * @Route("admin/update/trip/{id}", name="tripUpdate")
+     */
+    public function updateTrip(
+        TripRepository $tripRepository,
+        EntityManagerInterface $entityManager,
+        Request $request,
+        $id
+    ){
+        $trip = $tripRepository->find($id);
+        $tripForm = $this->createForm(TripType::class, $trip);
+        $tripForm->handleRequest($request);
+
+        if($tripForm->isValid() && $tripForm->isSubmitted()){
+            $entityManager->persist($trip);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Votre voyage a bien été modifié !');
+        }
+        return $this->render('Admin/updateTrip.html.twig', [
+            'tripForm'=> $tripForm->createView()
+        ]);
+    }
 }
