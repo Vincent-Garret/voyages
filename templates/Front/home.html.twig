@@ -4,11 +4,11 @@
     {% for trip in trips %}
         
         {% if trip.image %}
-            <div class="row">
+            <div class="row align-items-center mr-0 trip">
                 <div class="col-6"><img src="{{asset('img/'~ trip.image) }}" alt="image de test" class="img-fluid"></div>
                 <div class="col-6">
-                    <p>"{{ trip.poetry }}"</p>
-                    <p>{{ trip.author }}</p>
+                    <p class="poetry">"{{ trip.poetry }}"</p>
+                    <p class="author">{{ trip.author }}</p>
                 </div>
             </div>
         {% endif %}

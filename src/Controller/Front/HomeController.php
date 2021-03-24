@@ -19,7 +19,7 @@ class HomeController extends AbstractController
         CategoryRepository $categoryRepository)
     {
         $categories = $categoryRepository->findAll();
-        $trips = $tripRepository->findAll();
+        $trips = $tripRepository->findBy([], ['id' => 'DESC'], 4, 0);
         return $this->render('Front/home.html.twig', [
             'categories' => $categories,
             'trips' => $trips
