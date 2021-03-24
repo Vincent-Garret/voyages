@@ -1,0 +1,15 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0 auto;
+  background-color: black;
+  color: white;
+}
+
+.trip {
+  text-align: center;
+}
+
+/*# sourceMappingURL=style.css.map */
