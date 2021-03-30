@@ -55,8 +55,12 @@ class HomeController extends AbstractController
                     $form->get('password')->getData()
                 )
             );
+            $user->setRoles(["ROLE_USER"]);
+            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('Front/register.html.twig', [
