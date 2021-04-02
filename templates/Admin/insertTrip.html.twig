@@ -1,1 +1,5 @@
-{{ form(tripForm) }}
+<!-- if is granted -->
+{% if is_granted("ROLE_USER") %}
+    <p>Bonjour {{ username }}</p>
+    {{ form(tripForm) }}
+{% endif %}

@@ -61,7 +61,7 @@ class TripController extends AbstractController{
             $entityManager->persist($trip);
             $entityManager->flush();
             $this->addFlash('Success', 'Votre voyage a été crée !');
-            return $this->redirectToRoute('tripList');
+            return $this->redirectToRoute('home');
         }
         return $this->render('Admin/insertTrip.html.twig', [
             'tripForm' => $tripForm->createView()
