@@ -20,7 +20,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class TripController extends AbstractController
 {
     /**
-     * @Route("/insert/trip", name="insert")
+     * @Route("/user/insert/trip", name="insert")
      */
     public function insertTrip(
         Request $request,
