@@ -17,6 +17,7 @@
                     <p class="author">{{ trip.author }}</p>
                 </div>
                 <a href="{{ path('delete', {'id' : trip.id }) }}"> Supprimer le voyage</a>
+                <a href="{{ path('update', {'id' : trip.id }) }}"> Modifier le voyage</a>
             </div>
         {% endif %}
 

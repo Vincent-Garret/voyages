@@ -93,4 +93,28 @@ class TripController extends AbstractController
         $this->addFlash('Success', 'Votre voyage a bien été supprimé');
         return $this->redirectToRoute('trips');
     }
+
+    /**
+     * @Route("/user/update/trip/{id}", name="update")
+     */
+    public function updateTrip(
+        TripRepository $tripRepository,
+        EntityManagerInterface $entityManager,
+        Request $request,
+        $id
+    ){
+        $trip = $tripRepository->find($id);
+        $tripForm = $this->createForm(TripType::class, $trip);
+        $tripForm->handleRequest($request);
+
+        if ($tripForm->isSubmitted() &&$tripForm->isValid()){
+            $entityManager->persist($trip);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Votre voyage à bien été modifié');
+        }
+        return $this->render('Front/tripUpdate.html.twig', [
+            'tripForm' => $tripForm->createView()
+        ]);
+    }
 }
