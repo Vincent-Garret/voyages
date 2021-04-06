@@ -25,6 +25,7 @@ class TripController extends AbstractController{
      */
     public function trip(TripRepository $tripRepository){
         $trips = $tripRepository->findAll();
+        
 
         return $this->render('Admin/trip.html.twig', [
             'trips' => $trips

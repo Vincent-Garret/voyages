@@ -1,6 +1,12 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+    {% if is_granted("ROLE_USER") %}
+        <p>Bonjour {{ app.user.userName }}</p>
+        {% for user in users %}
+            <li>{{ user.userName}}</li>    
+        {% endfor %}
+    {% endif %}
     {% for trip in trips %}
         
         {% if trip.image %}
@@ -10,6 +16,7 @@
                     <p class="poetry">"{{ trip.poetry }}"</p>
                     <p class="author">{{ trip.author }}</p>
                 </div>
+                <a href="{{ path('delete', {'id' : trip.id }) }}"> Supprimer le voyage</a>
             </div>
         {% endif %}
 

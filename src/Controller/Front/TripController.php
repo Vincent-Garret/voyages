@@ -14,11 +14,32 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\TripType;
 use App\Entity\Trip;
+use Doctrine\ORM\Mapping\Id;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 class TripController extends AbstractController
 {
+
+    /**
+     * @Route("/user/trip", name="trips")
+     */
+    public function trips(
+        TripRepository $tripRepository,
+        CategoryRepository $categoryRepository,
+        UserRepository $userRepository)
+    {
+        $categories = $categoryRepository->findAll();
+        $trips = $tripRepository->findBy([], ['id' => 'DESC'], 4, 0);
+        $users = $userRepository->findAll();
+
+        return $this->render('Front/home.html.twig', [
+            'categories' => $categories,
+            'trips' => $trips,
+            'users' => $users
+        ]);
+    }
+
     /**
      * @Route("/user/insert/trip", name="insert")
      */
@@ -54,5 +75,22 @@ class TripController extends AbstractController
         return $this->render('Front/tripInsert.html.twig', [
             'tripForm' => $tripForm->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/user/delete/trip/{id}", name="delete")
+     */
+    public function deleteTrip(
+        TripRepository $tripRepository,
+        EntityManagerInterface $entityManager,
+        $id
+    ){
+        $trip = $tripRepository->find($id);
+        
+        $entityManager->remove($trip);
+        $entityManager->flush();
+
+        $this->addFlash('Success', 'Votre voyage a bien été supprimé');
+        return $this->redirectToRoute('trips');
     }
 }
