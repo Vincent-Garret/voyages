@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Category;
 use App\Entity\Trip;
+use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -28,7 +29,12 @@ class TripType extends AbstractType
                 'class' => Category::class,
                 'choice_label' => 'Name'
             ])
-            ->add('submit', SubmitType::class)
+            //->add('user', EntityType::class, [
+              //  'class' => User::class,
+               // 'label' => 'test',
+                //'choice_label' => 'userName'
+            //])
+             ->add('submit', SubmitType::class)
         ;
     }
 

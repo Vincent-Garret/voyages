@@ -40,6 +40,7 @@ class Trip
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="trips")
+     * @ORM\JoinColumn(name="user_id", onDelete="SET NULL")
      */
     private $user;
 

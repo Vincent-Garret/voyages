@@ -4,6 +4,8 @@
         <img src="{{asset('img/'~ trip.image) }}" alt="image de test">
         <p>{{ trip.poetry }}</p>
         <p>{{ trip.author }}</p>
+        <a href="{{ path('tripDelete', {'id' : trip.id }) }}"> Supprimer le voyage</a>
+        <a href="{{ path('tripUpdate', {'id' : trip.id }) }}"> Modifier le voyage</a>
     {% endif %}
 
 {% endfor %}

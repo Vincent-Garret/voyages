@@ -1,14 +1,9 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    {% if is_granted("ROLE_USER") %}
-        <p>Bonjour {{ app.user.userName }}</p>
-        {% for user in users %}
-            <li>{{ user.userName}}</li>    
-        {% endfor %}
-    {% endif %}
+    <a href="{{ path('app_login') }}"> Se connecter</a>
+    <a href="{{ path('register') }}"> S'inscrire</a>
     {% for trip in trips %}
-        
         {% if trip.image %}
             <div class="row align-items-center mr-0 trip">
                 <div class="col-6"><img src="{{asset('img/'~ trip.image) }}" alt="image de test" class="img-fluid"></div>

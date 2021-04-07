@@ -60,7 +60,7 @@ class HomeController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('trips');
         }
 
         return $this->render('Front/register.html.twig', [

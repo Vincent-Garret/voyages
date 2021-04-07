@@ -33,7 +33,7 @@ class TripController extends AbstractController
         $trips = $tripRepository->findBy([], ['id' => 'DESC'], 4, 0);
         $users = $userRepository->findAll();
 
-        return $this->render('Front/home.html.twig', [
+        return $this->render('Front/home_user.html.twig', [
             'categories' => $categories,
             'trips' => $trips,
             'users' => $users
@@ -49,6 +49,7 @@ class TripController extends AbstractController
         SluggerInterface $slugger
     ){
         $trip = new Trip();
+        $userId = $this->getUser();
         $tripForm = $this->createForm(TripType::class, $trip);
         $tripForm->handleRequest($request);
 
@@ -64,13 +65,14 @@ class TripController extends AbstractController
                 );
                 
                 $trip->setImage($newFileName);
+                $trip->setUser($userId);
                 $entityManager->persist($trip);
                 $entityManager->flush();
             }
             $entityManager->persist($trip);
             $entityManager->flush();
             $this->addFlash('Success', 'Votre voyage a été crée !');
-            return $this->redirectToRoute('tripList');
+            return $this->redirectToRoute('trips');
         }
         return $this->render('Front/tripInsert.html.twig', [
             'tripForm' => $tripForm->createView(),
