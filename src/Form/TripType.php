@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 use function PHPSTORM_META\type;
 
@@ -19,7 +20,10 @@ class TripType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('poetry')
+            ->add('poetry', TextareaType::class, [
+                'attr' => ['class' =>'text-editor'],
+                'help_html' => true
+            ])
             ->add('image', FileType::class, [
                 'label' => 'Image',
                 'mapped' => false
