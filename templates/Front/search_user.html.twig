@@ -1,12 +1,18 @@
-{% for user in users %}
-    {{ user.userName }}
-{% endfor %}
+{% extends "base.html.twig" %}
 
-<form action="{{ path('search_user') }}" method="GET">
-                <label>
-                    <input class="searchBar" type="text" name="search" placeholder="RECHERCHER">
-                </label>
-                <button class="btnSearch" type="submit">
-                    <i class="fa fa-search"></i>
-                </button>
-            </form>
+{% block body %}
+
+    {% for user in users %}
+        {{ user.userName }}
+    {% endfor %}
+
+    <form action="{{ path('search_user') }}" method="GET">
+        <label>
+            <input class="searchBar" type="text" name="search" placeholder="RECHERCHER">
+        </label>
+        <button class="btnSearch" type="submit">
+            <i class="fa fa-search"></i>
+        </button>
+    </form>
+
+{% endblock %}

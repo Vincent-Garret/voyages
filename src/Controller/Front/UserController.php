@@ -35,14 +35,16 @@ class UserController extends AbstractController{
     /**
      * @Route("/user/search", name="search_user")
      */
-    public function searchUser(Request $request, UserRepository $userRepository)
+    public function searchUser(Request $request, UserRepository $userRepository, TripRepository $tripRepository)
     {
         $search = $request->query->get('search');
         $users = $userRepository->getByWordInUserName($search);
+        $trips = $tripRepository->findBy([], ['id' => 'DESC'], 3, 0);
 
         return $this->render('Front/search_result.html.twig', [
             'search' => $search, 
-            'users' => $users
+            'users' => $users,
+            'trips' => $trips
         ]);
     }
 }
