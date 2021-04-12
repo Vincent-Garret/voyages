@@ -103,17 +103,33 @@ class TripController extends AbstractController
         TripRepository $tripRepository,
         EntityManagerInterface $entityManager,
         Request $request,
-        $id
+        $id,
+        SluggerInterface $slugger
     ){
         $trip = $tripRepository->find($id);
         $tripForm = $this->createForm(TripType::class, $trip);
         $tripForm->handleRequest($request);
 
         if ($tripForm->isSubmitted() &&$tripForm->isValid()){
+            $image = $tripForm->get('image')->getData();
+            if($image){
+                $originalFileName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFileName = $slugger->slug($originalFileName);
+                $newFileName = $safeFileName.'-'.uniqid().'.'.$image->guessExtension();
+                $image->move(
+                    $this->getParameter('img'),
+                    $newFileName
+                    );
+                $trip->setImage($newFileName);
+                $entityManager->persist($trip);
+                $entityManager->flush();
+            }
+
             $entityManager->persist($trip);
             $entityManager->flush();
 
             $this->addFlash('success', 'Votre voyage à bien été modifié');
+            return $this->redirectToRoute('trips');
         }
         return $this->render('Front/tripUpdate.html.twig', [
             'tripForm' => $tripForm->createView()

@@ -3,6 +3,9 @@
 {% block body %}
 
 Vous voici sur le profil de {{ search }}
+<br/>
+<a href="{{ path('trips') }}">Revenir a votre profil</a>
+
 
 
 {% for user in users %}
@@ -23,5 +26,6 @@ Vous voici sur le profil de {{ search }}
 
     {% endfor %}  
 {% endfor %}
+
 
 {% endblock %}

@@ -1,8 +1,14 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <a href="{{ path('app_login') }}"> Se connecter</a>
-    <a href="{{ path('register') }}"> S'inscrire</a>
+    {% if is_granted("ROLE_USER") %}
+        <p>Bon voyage {{ app.user.userName }}</p>
+        <a href="{{ path('trips') }}">Créer vos voyages</a>
+    {% else %}
+        <a href="{{ path('app_login') }}"> Se connecter</a>
+        <a href="{{ path('register') }}"> S'inscrire</a>
+    {% endif %}
+    
     {% for trip in trips %}
         {% if trip.image %}
             <div class="row align-items-center mr-0 trip">
@@ -11,8 +17,6 @@
                     <p class="poetry">"{{ trip.poetry | nl2br}}"</p>
                     <p class="author">{{ trip.author }}</p>
                 </div>
-                <a href="{{ path('delete', {'id' : trip.id }) }}"> Supprimer le voyage</a>
-                <a href="{{ path('update', {'id' : trip.id }) }}"> Modifier le voyage</a>
             </div>
         {% endif %}
 

@@ -2,10 +2,6 @@
 
 {% block body %}
 
-    {% for user in users %}
-        {{ user.userName }}
-    {% endfor %}
-
     <form action="{{ path('search_user') }}" method="GET">
         <label>
             <input class="searchBar" type="text" name="search" placeholder="RECHERCHER">
