@@ -1,0 +1,19 @@
+{% extends  "base.html.twig" %}
+
+{% block header %}
+
+{% if is_granted("ROLE_USER") %}
+<ul>
+    <li><a href="{{ path('home') }}">Voyages</a></li>
+    <li><a href="{{ path('trips') }}">Mon Profil</a></li>
+    <li><a href="{{ path('userList') }}">Chercher un Voyageur</a></li>
+    <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>   
+</ul>
+    {% else %}
+    <ul>
+        <li><a href="{{ path('home') }}">Voyages</a></li>
+        <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+        <li><a href="{{ path('register') }}">S'inscrire</a></li>
+    </ul>
+{% endif %}
+{% endblock %}

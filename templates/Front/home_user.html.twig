@@ -1,15 +1,6 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    {% if is_granted("ROLE_USER") %}
-        <p>Bonjour {{ app.user.userName }}</p>
-        <a href="{{ path('insert') }}"> Créer un nouveau voyage !!</a>
-        <br/>
-        <a href="{{ path('userList') }}"> Chercher un utilisateur </a>
-        <br/>
-        <a href="{{ path('home') }}"> Voyager </a>
-    {% endif %}
-
 
     {% for trip in trips %}
         {% if trip.user == app.user %} 
