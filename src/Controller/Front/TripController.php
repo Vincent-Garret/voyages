@@ -135,4 +135,18 @@ class TripController extends AbstractController
             'tripForm' => $tripForm->createView()
         ]);
     }
+
+    /**
+     *@Route("/user/trips/{id}", name="tripsByUser") 
+     */
+    public function tripsByUser(
+        UserRepository $userRepository,
+        $id)
+    {
+        $user = $userRepository->find($id);
+
+        return $this->render('Front/tripsByUser.html.twig', [
+            'user' => $user
+        ]);
+    }
 }

@@ -4,6 +4,7 @@
     {% if is_granted("ROLE_USER") %}
         <p>Bon voyage {{ app.user.userName }}</p>
         <a href="{{ path('trips') }}">Créer vos voyages</a>
+        <a href="{{ path('app_logout') }}">Se déconnecter</a>
     {% else %}
         <a href="{{ path('app_login') }}"> Se connecter</a>
         <a href="{{ path('register') }}"> S'inscrire</a>
@@ -16,6 +17,7 @@
                 <div class="col-6">
                     <p class="poetry">"{{ trip.poetry | nl2br}}"</p>
                     <p class="author">{{ trip.author }}</p>
+                    <p class="user"> by <a href="{{ path('tripsByUser', {'id' : trip.user.id }) }}"> {{ trip.user.userName }}</a></p>
                 </div>
             </div>
         {% endif %}
