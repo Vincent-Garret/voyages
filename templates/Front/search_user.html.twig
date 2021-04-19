@@ -11,4 +11,12 @@
         </button>
     </form>
 
+    {% for user in users %}
+
+    <ul>
+        <li>{{ user.userName }}</li>
+    </ul>
+        
+    {% endfor %}
+
 {% endblock %}

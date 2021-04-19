@@ -2,6 +2,13 @@
 
 {% block body %}
 
+    <div class="row justify-content-center">
+        <a href="{{ path('insert') }}">Créer un voyage</a>
+    </div>
+
+    {% if app.user.trips != null %}
+        <p>Bienvenue {{ app.user.username }}. Commencer à créer vos voyages en cliquant sur le bouton si dessus</p>
+    {% endif %}
     {% for trip in trips %}
         {% if trip.user == app.user %} 
                 {% if trip.image %}
@@ -11,8 +18,10 @@
                             <p class="poetry">"{{ trip.poetry | nl2br }}"</p>
                             <p class="author">{{ trip.author }}</p>
                         </div>
-                        <a href="{{ path('delete', {'id' : trip.id }) }}"> Supprimer le voyage</a>
-                        <a href="{{ path('update', {'id' : trip.id }) }}"> Modifier le voyage</a>
+                        <div class="container-fluid">
+                            <a href="{{ path('delete', {'id' : trip.id }) }}" class="col-6"> Supprimer le voyage</a>
+                            <a href="{{ path('update', {'id' : trip.id }) }}"> Modifier le voyage</a>
+                        </div>
                     </div>
                 {% endif %}
         {% endif %}

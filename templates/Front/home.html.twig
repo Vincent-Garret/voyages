@@ -10,8 +10,10 @@
                     <p class="poetry">"{{ trip.poetry | nl2br}}"</p>
                     <p class="author">{{ trip.author }}</p>
                     <p class="user"> by <a href="{{ path('tripsByUser', {'id' : trip.user.id }) }}"> {{ trip.user.userName }}</a></p>
+                    <p class="category">Dans la catégorie <a href="{{ path('tripsByCategory', {'id' : trip.category.id }) }}">{{ trip.category.name }}</a></p>
                 </div>
             </div>
+            <hr>
         {% endif %}
 
     {% endfor %}

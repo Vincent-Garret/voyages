@@ -12,4 +12,14 @@ body {
   text-align: center;
 }
 
+.granted, .notGranted {
+  height: 16vh;
+  list-style-type: none;
+}
+
+hr {
+  background-color: white;
+  margin: 20px 20%;
+}
+
 /*# sourceMappingURL=style.css.map */

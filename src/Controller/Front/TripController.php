@@ -149,4 +149,19 @@ class TripController extends AbstractController
             'user' => $user
         ]);
     }
+
+    /**
+     * @Route("/user/category/{id}", name="tripsByCategory")
+     */
+    public function tripsByCategory(
+        CategoryRepository $categoryRepository,
+        $id
+    )
+    {
+        $category = $categoryRepository->find($id);
+
+        return $this->render('Front/tripsByCategory.html.twig', [
+            'category' => $category
+        ]);
+    }
 }

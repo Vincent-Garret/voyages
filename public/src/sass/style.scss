@@ -1,3 +1,10 @@
+@import "var";
+@import "responsive";
+@import "fonts";
+@import "reboot";
+@import "animate";
+
+
 html, body { height: 100%; }
 
 body {
@@ -9,4 +16,17 @@ body {
 .trip{
     text-align: center;
 }
+
+.granted, .notGranted{
+  height: 16vh;
+  list-style-type: none;
+}
+
+hr{
+  background-color: white;
+  margin: 20px 20%;
+}
+
+
+
 
