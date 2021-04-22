@@ -6,7 +6,8 @@
             {% if trip.image %}
                 <div class="row align-items-center mr-0 trip">
                     <div class="col-6"><img src="{{asset('img/'~ trip.image) }}" alt="image de test" class="img-fluid"></div>
-                    <div class="col-6">
+                    <div class="col-6">                    
+                        <div><img src="{{asset('img/comma_white.png') }}" alt="image représentant des virgules pour le style" class="img-fluid col-2 mb-5"> </div>
                         <p class="poetry">"{{ trip.poetry | nl2br}}"</p>
                         <p class="author">{{ trip.author }}</p>
                         <p class="user"> by <a href="{{ path('trips') }}"> {{ trip.user.userName }}</a></p>

@@ -11,9 +11,10 @@ body {
   margin: 0 auto;
   background-color: black;
   color: white;
+  font-family: 'Roboto Mono', monospace;
 }
 
-.trip{
+.trip, .welcome{
     text-align: center;
 }
 
@@ -26,6 +27,21 @@ hr{
   background-color: white;
   margin: 20px 20%;
 }
+
+.line{
+  display: flex;
+  flex-direction: row;
+  content: "";
+  flex: 1 1;
+  border-bottom: 2px solid white;
+  margin: auto;
+}
+
+header{
+  border-bottom: solid 0.8px rgba(0, 240, 72, 0.7);
+}
+
+
 
 
 
