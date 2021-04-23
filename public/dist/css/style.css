@@ -1,3 +1,21 @@
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #00f048;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #84f57a;
+}
+
 html, body {
   height: 100%;
 }
@@ -34,6 +52,12 @@ hr {
 
 header {
   border-bottom: solid 0.8px rgba(0, 240, 72, 0.7);
+}
+
+.trip {
+  border-radius: 25% 10%;
+  overflow: hidden;
+  border: solid 1px white;
 }
 
 /*# sourceMappingURL=style.css.map */

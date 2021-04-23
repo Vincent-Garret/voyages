@@ -14,6 +14,8 @@ body {
   font-family: 'Roboto Mono', monospace;
 }
 
+
+
 .trip, .welcome{
     text-align: center;
 }
@@ -39,6 +41,12 @@ hr{
 
 header{
   border-bottom: solid 0.8px rgba(0, 240, 72, 0.7);
+}
+
+.trip{
+  border-radius: 25% 10%; 
+  overflow: hidden;
+  border: solid 1px white
 }
 
 
