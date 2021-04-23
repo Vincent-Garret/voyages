@@ -2,6 +2,33 @@
 
 {% block body %}
 
-{{ form(tripForm) }}
+<div class="trip_insert d-flex align-items-stretch flex-column">
+    <div class=" trip_form">
+        {{ form_start(tripForm) }}
+        <div>{{form_label(tripForm.poetry) }}</div>
+            {{form_widget(tripForm.poetry) }}
+            {{form_errors(tripForm.poetry) }}
+
+
+        <div>{{form_label(tripForm.image) }}</div>
+            {{form_widget(tripForm.image) }}
+            {{form_errors(tripForm.image) }}
+
+        <div>{{form_label(tripForm.author) }}</div>
+            {{form_widget(tripForm.author) }}
+            {{form_errors(tripForm.author) }}
+
+        <div>{{form_label(tripForm.category) }}</div>
+            {{form_widget(tripForm.category) }}
+            {{form_errors(tripForm.category) }}
+
+        <div class="wrap">
+            {{form_widget(tripForm.submit, {'attr' : { 'class' : 'button my-5'}}) }}
+        </div>
+
+        {{ form_end(tripForm) }}
+    
+    </div>
+</div>
 
 {% endblock %}
