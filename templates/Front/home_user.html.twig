@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <div class="row justify-content-center mx-0 pt-5 pb-1 ml-1 mr-1">
+    <div class="row justify-content-center mx-0 my-3 pb-1 ml-1 mr-1">
         <a href="{{ path('insert') }}">Créer un voyage</a>
     </div>
 
@@ -22,11 +22,12 @@
                             </div>
                             <div><p class="poetry">"{{ trip.poetry | nl2br }}"</p></div>
                             <div><p class="author">{{ trip.author }}</p></div>
+                            <div class="options pt-5">
+                                <a href="{{ path('delete', {'id' : trip.id }) }}" class="col-6"> Supprimer le voyage</a>
+                                <a href="{{ path('update', {'id' : trip.id }) }}"> Modifier le voyage</a>
+                            </div>
                         </div>
-                        <div class="container-fluid mr-0">
-                            <a href="{{ path('delete', {'id' : trip.id }) }}" class="col-6"> Supprimer le voyage</a>
-                            <a href="{{ path('update', {'id' : trip.id }) }}"> Modifier le voyage</a>
-                        </div>
+                        
                     </div>
                 {% endif %}
         {% endif %}

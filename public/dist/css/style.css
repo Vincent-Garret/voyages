@@ -8,12 +8,87 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #00f048;
+  background-color: #00b837;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #84f57a;
+  background-color: #00f048;
+}
+
+a {
+  color: #47ec78;
+}
+
+a:hover {
+  color: #00b837;
+  text-decoration: none;
+}
+
+a, a > span {
+  position: relative;
+  text-decoration: none;
+  line-height: 24px;
+}
+
+a:before, a:after, a > span:before, a > span:after {
+  content: "";
+  position: absolute;
+  transition: transform 0.5s ease;
+}
+
+.headerLink {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.headerLink:before, .headerLink:after {
+  right: 0;
+  bottom: 0;
+  background: #00b837;
+}
+
+.headerLink:before {
+  width: 100%;
+  height: 2px;
+  transform: translateX(-100%);
+}
+
+.headerLink:after {
+  width: 2px;
+  height: 100%;
+  transform: translateY(100%);
+}
+
+.headerLink > span {
+  display: flex;
+  padding: 10px;
+}
+
+.headerLink > span:before, .headerLink > span:after {
+  left: 0;
+  top: 0;
+  background: #00b837;
+}
+
+.headerLink > span:before {
+  width: 100%;
+  height: 2px;
+  transform: translateX(100%);
+}
+
+.headerLink > span:after {
+  width: 2px;
+  height: 100%;
+  transform: translateY(-100%);
+}
+
+.headerLink:hover:before, .headerLink:hover:after, .headerLink:hover > span:before, .headerLink:hover > span:after {
+  transform: translate(0, 0);
+}
+
+.options {
+  font-size: 11px;
 }
 
 html, body {
@@ -57,7 +132,7 @@ header {
 .trip {
   border-radius: 25% 10%;
   overflow: hidden;
-  border: solid 1px white;
+  border: solid 1px #00f048;
 }
 
 /*# sourceMappingURL=style.css.map */

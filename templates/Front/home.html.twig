@@ -4,7 +4,7 @@
     
     {% for trip in trips %}
         {% if trip.image %}
-            <div class="row align-items-stretch mr-0 trip mt-3 trip ml-1 mr-1">
+            <div class="row align-items-stretch mr-0 trip my-3 trip ml-1 mr-1">
                 <div class="col-6"><img src="{{asset('img/'~ trip.image) }}" alt="image de test" class="img-fluid"></div>
                 <div class="col-6 d-flex flex-column justify-content-around">
                     <div class="row">
