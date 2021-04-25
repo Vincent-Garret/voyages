@@ -20,6 +20,10 @@ a {
   color: #47ec78;
 }
 
+button a {
+  color: #00b837;
+}
+
 a:hover {
   color: #00b837;
   text-decoration: none;
@@ -97,8 +101,6 @@ html, body {
 
 body {
   margin: 0 auto;
-  background-color: black;
-  color: white;
   font-family: "Roboto Mono", monospace;
 }
 
@@ -121,7 +123,7 @@ hr {
   flex-direction: row;
   content: "";
   flex: 1 1;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid black;
   margin: auto;
 }
 
@@ -150,14 +152,14 @@ header {
 .button {
   min-width: 300px;
   min-height: 60px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto Mono", sans-serif;
   font-size: 22px;
   text-transform: uppercase;
   letter-spacing: 1.3px;
   font-weight: 700;
   color: #313133;
   background: #4FD1C5;
-  background: linear-gradient(90deg, #81e6d9 0%, #4fd1c5 100%);
+  background: linear-gradient(90deg, #47ec78 0%, #4fd1c5 100%);
   border: none;
   border-radius: 1000px;
   box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
@@ -190,19 +192,6 @@ button::before {
 
 .button:hover::before, .button:focus::before {
   opacity: 1;
-}
-
-.button::after {
-  content: "";
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  border: 6px solid #00FFCB;
-  position: absolute;
-  z-index: -1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .button:hover::after, .button:focus::after {

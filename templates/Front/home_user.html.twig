@@ -3,7 +3,9 @@
 {% block body %}
 
     <div class="row justify-content-center mx-0 my-3 pb-1 ml-1 mr-1">
-        <a href="{{ path('insert') }}">Créer un voyage</a>
+        <div class="wrap">
+            <button class="button"><a href="{{ path('insert') }}">Créer un voyage</a></button>
+        </div>
     </div>
 
     
@@ -12,12 +14,12 @@
     {% for trip in trips %}
         {% if trip.user == app.user %} 
                 {% if trip.image %}
-                    <div class="row align-items-stretch trip mx-0">
-                        <div class="col-6"><img src="{{asset('img/'~ trip.image) }}" alt="image de test" class="img-fluid"></div>
+                    <div class="row align-items-stretch trip mx-5">
+                        <div class="col-6 p-0"><img src="{{asset('img/'~ trip.image) }}" alt="image de test" class="img-fluid"></div>
                         <div class="col-6 d-flex flex-column justify-content-around">
                             <div class="row">
                                 <div class="line col-3"></div>
-                                    <div class="col-2"><img src="{{asset('img/comma_white.png') }}" alt="image représentant des guillemets pour le style" class="img-fluid"> </div>
+                                    <div class="col-2"><img src="{{asset('img/comma_black.png') }}" alt="image représentant des guillemets pour le style" class="img-fluid"> </div>
                                 <div class="line col-3"></div>
                             </div>
                             <div><p class="poetry">"{{ trip.poetry | nl2br }}"</p></div>

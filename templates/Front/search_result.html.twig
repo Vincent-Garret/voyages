@@ -2,22 +2,26 @@
 
 {% block body %}
 
-Vous voici sur le profil de {{ search }}
-<br/>
-<a href="{{ path('trips') }}">Revenir a votre profil</a>
-
-
+<p class="text-center">Vous voici sur le profil de <span>{{ search }}</span></p>
 
 {% for user in users %}
     {% for trip in user.trips | reverse %}
     
         {% if trip.image %}
-            <div class="row align-items-center mr-0 trip my-3 pb-1 ml-1 mr-1">
-                <div class="col-6"><img src="{{asset('img/'~ trip.image) }}" alt="image de test" class="img-fluid"></div>
-                <div class="col-6">
-                    <div><img src="{{asset('img/comma_white.png') }}" alt="image représentant des virgules pour le style" class="img-fluid col-2"> </div>
-                    <p class="poetry">"{{ trip.poetry | nl2br }}"</p>
-                    <p class="author">{{ trip.author }}</p>
+            <div class="row align-items-stretch trip my-3 mx-5">
+                <div class="col-6 p-0"><img src="{{asset('img/'~ trip.image) }}" alt="image de test" class="img-fluid"></div>
+                <div class="col-6 d-flex flex-column justify-content-around">
+                    <div class="row">
+                        <div class="line col-3"></div>
+                            <div class="col-2"><img src="{{asset('img/comma_black.png') }}" alt="image représentant des virgules pour le style" class="img-fluid"> </div>
+                        <div class="line col-3"></div>
+                    </div>
+                        <p class="poetry">"{{ trip.poetry | nl2br }}"</p>
+                    <div>    
+                        <p class="author">{{ trip.author }}</p>
+                        <p class="user"> by <a href="{{ path('tripsByUser', {'id' : trip.user.id }) }}"> {{ trip.user.userName }}</a></p>
+                        <p class="category">Dans la catégorie <a href="{{ path('tripsByCategory', {'id' : trip.category.id }) }}">{{ trip.category.name }}</a></p>
+                    </div>
                 </div>
             </div>
             <hr>

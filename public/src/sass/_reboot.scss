@@ -20,6 +20,10 @@ a {
     color: $link;
 }
 
+button a{
+    color: $linkHover;
+}
+
 a:hover{
     color: $linkHover;
     text-decoration: none;
