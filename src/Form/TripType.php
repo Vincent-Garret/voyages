@@ -21,8 +21,8 @@ class TripType extends AbstractType
     {
         $builder
             ->add('poetry', TextareaType::class, [
-                'attr' => ['cols' => '75', 'rows' =>'15'],
-                'help_html' => true
+                'attr' => ['cols' => '75', 'rows' =>'15', 'placeholder' => 'Ecrivez votre poème ici'],
+                'help_html' => true,
             ])
             ->add('image', FileType::class, [
                 'label' => 'Image',

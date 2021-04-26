@@ -94,3 +94,10 @@ a, a > span {
 .options{
     font-size: 11px;
 }
+
+@media screen and (max-width:980px) {
+    .granted, .notGranted{
+        height: 4vh!important;
+        font-size: 26px;
+      }
+}

@@ -12,8 +12,8 @@
             <li><a class="headerLink" href="{{ path('app_logout') }}"><span>Se déconnecter</span></a></li>   
         </ul>
             {% else %}
-        <ul class="notGranted row justify-content-between align-items-center">
-            <li><a class="headerLink" href="{{ path('home') }}"><span>Voyages</span></a></li>
+        <ul class="notGranted row justify-content-around align-items-center">
+            <li class=""><a class="headerLink" href="{{ path('home') }}"><span>Voyages</span></a></li>
             <li><a class="headerLink" href="{{ path('app_login') }}"><span>Se connecter</span></a></li>
             <li><a class="headerLink" href="{{ path('register') }}"><span>S'inscrire</span></a></li>
         </ul>

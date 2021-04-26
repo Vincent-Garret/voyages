@@ -2,19 +2,19 @@
 
 {% block body %}
 
-    <form action="{{ path('search_user') }}" method="GET">
+    <form action="{{ path('search_user') }}" method="GET" class=" d-flex flex-column align-items-center pt-5">
         <label>
             <input class="searchBar" type="text" name="search" placeholder="RECHERCHER">
         </label>
-        <button class="btnSearch" type="submit">
-            <i class="fa fa-search"></i>
+        <button class=" button btnSearch" type="submit">
+            <i class="fa fa-search">ok</i>
         </button>
     </form>
 
     {% for user in users %}
 
     <ul>
-        <li>{{ user.userName }}</li>
+        <li><a href="{{ path('tripsByUser', {'id' : user.id }) }}">{{ user.userName }}</a></li>
     </ul>
         
     {% endfor %}

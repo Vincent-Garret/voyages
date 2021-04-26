@@ -9,8 +9,8 @@
     
         {% if trip.image %}
             <div class="row align-items-stretch trip my-3 mx-5">
-                <div class="col-6 p-0"><img src="{{asset('img/'~ trip.image) }}" alt="image de test" class="img-fluid"></div>
-                <div class="col-6 d-flex flex-column justify-content-around">
+                <div class="d-lg-flex align-items-center col-12 col-lg-6 p-0"><img src="{{asset('img/'~ trip.image) }}" alt="image de test" class="img-fluid"></div>
+                <div class="col-12 col-lg-6 d-flex flex-column justify-content-around pt-lg-0 pt-3">
                     <div class="row">
                         <div class="line col-3"></div>
                             <div class="col-2"><img src="{{asset('img/comma_black.png') }}" alt="image représentant des virgules pour le style" class="img-fluid"> </div>
