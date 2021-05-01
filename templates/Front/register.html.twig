@@ -2,6 +2,33 @@
 
 {% block body %}
 
-{{ form(registrationForm) }}
+
+
+<div class="register d-flex align-items-stretch flex-column">
+    <div class=" trip_form">
+        {{ form_start(registrationForm) }}
+        <div>{{form_label(registrationForm.username) }}</div>
+            {{form_widget(registrationForm.username) }}
+            {{form_errors(registrationForm.username) }}
+
+
+        <div>{{form_label(registrationForm.password) }}</div>
+            {{form_widget(registrationForm.password) }}
+            {{form_errors(registrationForm.password) }}
+
+
+        <div class="wrap">
+            {{form_widget(registrationForm.submit, {'attr' : { 'class' : 'button my-5'}}) }}
+        </div>
+        {% for message in app.flashes('port') %}
+            <div class="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {{ form_end(registrationForm) }}
+    
+    </div>
+</div>
 
 {% endblock %}

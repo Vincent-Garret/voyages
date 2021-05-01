@@ -60,7 +60,12 @@ class HomeController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            
+
             return $this->redirectToRoute('trips');
+        }
+        else{
+            $this->addFlash('port', 'Le nom d\'utilisateur est déja utililsé');
         }
 
         return $this->render('Front/register.html.twig', [

@@ -121,8 +121,6 @@ class TripController extends AbstractController
                     $newFileName
                     );
                 $trip->setImage($newFileName);
-                $entityManager->persist($trip);
-                $entityManager->flush();
             }
 
             $entityManager->persist($trip);

@@ -26,7 +26,7 @@ class RegistrationType extends AbstractType
                 'invalid_message' => 'le mot de passe n\'est pas identique',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-                'first_options' => ['label' => 'mot de passe'],
+                'first_options' => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Confirmer le mot de passe'],
                 'mapped' => false
             ])
