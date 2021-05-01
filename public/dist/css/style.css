@@ -311,4 +311,13 @@ textarea:focus, input:focus, select:focus, button:focus {
   border: solid 3px #00b837;
 }
 
+.navigation .page-item.active .page-link {
+  background-color: #00e846;
+  border-color: #00e846;
+}
+
+.navigation .page-link {
+  color: #00e846;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -1,6 +1,10 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+
+        <div class="navigation d-flex justify-content-center pt-5">
+            {{ knp_pagination_render(trips) }}
+        </div>
     
     {% for trip in trips %}
         {% if trip.image %}
@@ -24,7 +28,7 @@
         {% endif %}
     {% endfor %}
 
-        <div class="navigation">
+        <div class="navigation d-flex justify-content-center">
             {{ knp_pagination_render(trips) }}
         </div>
 {% endblock %}

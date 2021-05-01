@@ -119,6 +119,15 @@ textarea:focus, input:focus, select:focus, button:focus{
   border: solid 3px $linkHover;
 }
 
+.navigation .page-item.active .page-link{
+  background-color: $link;
+  border-color: $link;
+}
+
+.navigation .page-link{
+  color: $link;
+}
+
 
 
 
