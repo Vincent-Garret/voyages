@@ -3,6 +3,7 @@
 
 namespace App\Controller\Front;
 
+use App\Entity\Trip;
 use App\Entity\User;
 use App\Form\RegistrationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,6 +15,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\Response;
+use Knp\Component\Pager\PaginatorInterface;
+
 
 class HomeController extends AbstractController
 {
@@ -21,11 +25,20 @@ class HomeController extends AbstractController
      * @Route("", name="home")
      */
     public function trips(
-        TripRepository $tripRepository,
-        CategoryRepository $categoryRepository)
+        CategoryRepository $categoryRepository,
+        Request $request,
+        PaginatorInterface $paginator ): Response
     {
+        $em = $this->getDoctrine()->getManager();
+        $tripRepository = $em->getRepository(Trip::class);
+        $allTripsQuery = $tripRepository->findBy([], ['id' =>'DESC']);
         $categories = $categoryRepository->findAll();
-        $trips = $tripRepository->findBy([], ['id' => 'DESC'], 8, 0);
+        $trips = $paginator->paginate(
+            $allTripsQuery,
+            $request->query->getInt('page', 1),
+            8
+        );
+        
         return $this->render('Front/home.html.twig', [
             'categories' => $categories,
             'trips' => $trips
