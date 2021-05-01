@@ -110,7 +110,8 @@ button::before {
 }
 
 textarea, input, select{
-  border:solid 1px rgba(0, 240, 72, 0.7);
+  border:solid 1px rgba(0, 240, 72, 0.7)!important;
+  background-color: rgb(232, 240, 254) !important;
 }
 
 textarea:focus, input:focus, select:focus{

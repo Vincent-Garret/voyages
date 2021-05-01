@@ -1,3 +1,17 @@
+@media screen and (max-width: 980px) {
+  .granted, .notGranted {
+    height: 4vh !important;
+    font-size: 26px;
+  }
+
+  header {
+    border-bottom: none !important;
+  }
+
+  .trip {
+    font-size: 26px !important;
+  }
+}
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -184,16 +198,6 @@ a:before, a:after, a > span:before, a > span:after {
   transform: none;
 }
 
-@media screen and (max-width: 980px) {
-  .granted, .notGranted {
-    height: 4vh !important;
-    font-size: 26px;
-  }
-
-  header {
-    border-bottom: none !important;
-  }
-}
 html, body {
   height: 100%;
 }
@@ -298,7 +302,8 @@ button::before {
 }
 
 textarea, input, select {
-  border: solid 1px rgba(0, 240, 72, 0.7);
+  border: solid 1px rgba(0, 240, 72, 0.7) !important;
+  background-color: #e8f0fe !important;
 }
 
 textarea:focus, input:focus, select:focus {

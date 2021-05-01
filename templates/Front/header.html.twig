@@ -5,20 +5,21 @@
 <header class="container-fluid">
 
     {% if is_granted("ROLE_USER") %}
-     <nav role="navigation" class="d-lg-none">
-        <div id="menuToggle">
-            <input type="checkbox"/>
-                <span></span>
-                <span></span>
-                <span></span>
-                <ul id="menu">
-                    <a href='{{ path('home') }}'><li>Voyages</li></a>
-                    <a href='{{ path('trips') }}'><li>Mon Profil</li></a>
-                    <a href='{{ path('userList') }}'><li>Chercher un Voyageur</li></a>
-                    <a href='{{ path('app_logout') }}'><li>Se déconnecter</li></a>
-                </ul>
-        </div>
-    </nav> 
+        <nav role="navigation" class="d-lg-none">
+            <div id="menuToggle">
+                <input type="checkbox"/>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <ul id="menu">
+                        <a href='{{ path('home') }}'><li>Voyages</li></a>
+                        <a href='{{ path('trips') }}'><li>Mon Profil</li></a>
+                        <a href='{{ path('userList') }}'><li>Chercher un Voyageur</li></a>
+                        <a href='{{ path('app_logout') }}'><li>Se déconnecter</li></a>
+                    </ul>
+            </div>
+        </nav> 
+
         <ul class="d-none d-lg-flex granted row justify-content-around align-items-center">
             <li><a class="headerLink" href="{{ path('home') }}"><span>Voyages</span></a></li>
             <li><a class="headerLink" href="{{ path('trips') }}"><span>Mon Profil</span></a></li>
@@ -26,7 +27,21 @@
             <li><a class="headerLink" href="{{ path('app_logout') }}"><span>Se déconnecter</span></a></li>   
         </ul>
             {% else %}
-        <ul class="notGranted row justify-content-around align-items-center">
+        <nav role="navigation" class="d-lg-none">
+            <div id="menuToggle">
+                <input type="checkbox"/>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <ul id="menu">
+                        <a href='{{ path('home') }}'><li>Voyages</li></a>
+                        <a href='{{ path('app_login') }}'><li>Se connecter</li></a>
+                        <a href='{{ path('register') }}'><li>S'inscrire</li></a>
+                    </ul>
+            </div>
+        </nav> 
+
+        <ul class="d-none d-lg-flex notGranted row justify-content-around align-items-center">
             <li class=""><a class="headerLink" href="{{ path('home') }}"><span>Voyages</span></a></li>
             <li><a class="headerLink" href="{{ path('app_login') }}"><span>Se connecter</span></a></li>
             <li><a class="headerLink" href="{{ path('register') }}"><span>S'inscrire</span></a></li>

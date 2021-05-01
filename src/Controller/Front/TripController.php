@@ -30,7 +30,7 @@ class TripController extends AbstractController
         UserRepository $userRepository)
     {
         $categories = $categoryRepository->findAll();
-        $lastTrips = $tripRepository->findBy([], ['id' => 'DESC'], 4, 0);
+        $lastTrips = $tripRepository->findBy([], ['id' => 'DESC'], 5, 0);
         $users = $userRepository->findAll();
 
         return $this->render('Front/home_user.html.twig', [
