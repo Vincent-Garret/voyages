@@ -2,7 +2,9 @@
 
 {% block body %}
 
-    {% for trip in category.trips | reverse %}
+    
+
+    {% for trip in category.trips | reverse | slice(0, 12) %}
             {% if trip.image %}
                 <div class="row align-items-stretch trip my-3 mx-5">
                     <div class="d-lg-flex align-items-center col-12 col-lg-6 p-0"><img src="{{asset('img/'~ trip.image) }}" alt="image de test" class="img-fluid"></div>
@@ -23,4 +25,5 @@
         <hr>
     {% endfor %}
 
+    
 {% endblock %}

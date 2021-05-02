@@ -9,7 +9,7 @@
         {{ form_start(registrationForm) }}
         <div>{{form_label(registrationForm.username) }}</div>
             {{form_widget(registrationForm.username) }}
-            {{form_errors(registrationForm.username) }}
+            {{form_errors(registrationForm) }}
 
 
         <div>{{form_label(registrationForm.password) }}</div>
@@ -20,13 +20,12 @@
         <div class="wrap">
             {{form_widget(registrationForm.submit, {'attr' : { 'class' : 'button my-5'}}) }}
         </div>
+        {{ form_end(registrationForm) }}
         {% for message in app.flashes('port') %}
-            <div class="alert">
+            <div class="text-danger">
                 {{ message }}
             </div>
         {% endfor %}
-
-        {{ form_end(registrationForm) }}
     
     </div>
 </div>

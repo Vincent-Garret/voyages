@@ -11,6 +11,10 @@
     
         <p class="welcome pb-5">Bienvenue {{ app.user.username }}. Créer vos voyages en cliquant sur le bouton si dessus</p>
 
+        <div class="navigation d-flex justify-content-center">
+            {{ knp_pagination_render(trips) }}
+        </div>
+
     {% for trip in trips %}
         {% if trip.user == app.user %} 
                 {% if trip.image %}
@@ -35,4 +39,8 @@
         {% endif %}
         <hr>
     {% endfor %}
+
+    <div class="navigation d-flex justify-content-center">
+        {{ knp_pagination_render(trips) }}
+    </div>
 {% endblock %}

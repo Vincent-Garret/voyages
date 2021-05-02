@@ -3,6 +3,7 @@
 
 namespace App\Controller\Front;
 
+use App\Entity\Category;
 use App\Entity\User;
 use App\Form\RegistrationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,6 +18,8 @@ use App\Entity\Trip;
 use Doctrine\ORM\Mapping\Id;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Knp\Component\Pager\PaginatorInterface;
+
 
 class TripController extends AbstractController
 {
@@ -27,15 +30,24 @@ class TripController extends AbstractController
     public function trips(
         TripRepository $tripRepository,
         CategoryRepository $categoryRepository,
-        UserRepository $userRepository)
+        UserRepository $userRepository,
+        paginatorInterface $paginator,
+        Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $tripRepository = $em->getRepository(Trip::class);
+        $allTripsQuery = $tripRepository->findBy([], ['id' => 'DESC']);
         $categories = $categoryRepository->findAll();
-        $lastTrips = $tripRepository->findBy([], ['id' => 'DESC'], 5, 0);
+        $trips = $paginator->paginate(
+            $allTripsQuery,
+            $request->query->getInt('page', 1),
+            8
+        );
         $users = $userRepository->findAll();
 
         return $this->render('Front/home_user.html.twig', [
             'categories' => $categories,
-            'trips' => $lastTrips,
+            'trips' => $trips,
             'users' => $users
         ]);
     }
@@ -154,9 +166,10 @@ class TripController extends AbstractController
     public function tripsByCategory(
         CategoryRepository $categoryRepository,
         $id
-    )
+        )
     {
         $category = $categoryRepository->find($id);
+        
 
         return $this->render('Front/tripsByCategory.html.twig', [
             'category' => $category
