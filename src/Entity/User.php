@@ -46,6 +46,16 @@ class User implements UserInterface
      */
     private $trips;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $acceptance;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
+
     public function __construct()
     {
         $this->trips = new ArrayCollection();
@@ -153,6 +163,30 @@ class User implements UserInterface
                 $trip->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAcceptance(): ?bool
+    {
+        return $this->acceptance;
+    }
+
+    public function setAcceptance(bool $acceptance): self
+    {
+        $this->acceptance = $acceptance;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }

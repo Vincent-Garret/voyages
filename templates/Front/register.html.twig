@@ -16,8 +16,13 @@
             {{form_widget(registrationForm.password) }}
             {{form_errors(registrationForm.password) }}
 
+            {{form_label(registrationForm.acceptance) }}
+            {{form_widget(registrationForm.acceptance) }}
+            {{form_errors(registrationForm.acceptance) }}
+
 
         <div class="wrap">
+            <input type="hidden" id="recaptchaResponse" name="recaptcha-response">
             {{form_widget(registrationForm.submit, {'attr' : { 'class' : 'button my-5'}}) }}
         </div>
         {{ form_end(registrationForm) }}

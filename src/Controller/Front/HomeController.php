@@ -81,4 +81,11 @@ class HomeController extends AbstractController
         ]);
 
     }
+
+    /**
+     * @Route("/cgu") name="cgu")
+     */
+    public function cgu(){
+        return $this->render('Front/cgu.html.twig');
+    }
 }
